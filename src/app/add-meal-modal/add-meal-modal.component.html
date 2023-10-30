@@ -1,0 +1,21 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button color="medium" (click)="cancel()">Отмена</ion-button>
+    </ion-buttons>
+    <ion-title>Новый приём пищи</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="confirm()" [strong]="true">Добавить</ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+<ion-content class="ion-padding">
+  <ion-item>
+    <ion-input
+      labelPlacement="stacked"
+      label="Введите название приёма пищи"
+      [(ngModel)]="name"
+      placeholder="Перекус"
+    ></ion-input>
+  </ion-item>
+</ion-content>
