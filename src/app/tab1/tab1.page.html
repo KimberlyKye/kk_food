@@ -12,11 +12,17 @@
   </ion-header>
 
   <ion-accordion-group>
-    <ion-accordion *ngFor="let meal of meals" [value]="meal.value">
+    <ion-accordion
+      *ngFor="let meal of meals; let i = index"
+      [value]="meal.value"
+    >
       <ion-item slot="header" color="light">
         <ion-label>{{meal.label}}</ion-label>
+        <ion-button horizontal="end" (click)="deleteMeal(i)">
+          <ion-icon name="trash"></ion-icon>
+        </ion-button>
       </ion-item>
-      <div class="ion-padding" slot="content">{{meal.content}}</div>
+      <div class="ion-padding" slot="content">{{meal.label}}</div>
     </ion-accordion>
   </ion-accordion-group>
 

@@ -13,17 +13,17 @@ export class Tab1Page {
     {
       value: 'breakfast',
       label: 'Завтрак',
-      content: 'Завтрак',
+      content: {} as any,
     },
     {
       value: 'launch',
       label: 'Обед',
-      content: 'Обед',
+      content: {} as any,
     },
     {
       value: 'dinner',
       label: 'Ужин',
-      content: 'Ужин',
+      content: {} as any,
     },
   ];
   meals = this.defaultMeals;
@@ -34,8 +34,12 @@ export class Tab1Page {
     this.meals.push({
       value: title,
       label: title,
-      content: title,
+      content: {} as any,
     });
+  }
+
+  deleteMeal(id: number) {
+    this.meals.splice(id, 1);
   }
 
   async openModal() {
