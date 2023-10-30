@@ -1,0 +1,7 @@
+{
+  "name": "kk_food",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
