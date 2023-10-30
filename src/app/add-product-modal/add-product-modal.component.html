@@ -1,0 +1,21 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button color="medium" (click)="cancel()">Отмена</ion-button>
+    </ion-buttons>
+    <ion-title>Настройка продукта</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="confirm()" [strong]="true">Добавить</ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+<ion-content class="ion-padding">
+  <ion-item>
+    <ion-input
+      labelPlacement="stacked"
+      label="Выберите кол-во грамм"
+      [(ngModel)]="data.current_serving_size_g"
+      placeholder="Вес порции"
+    ></ion-input>
+  </ion-item>
+</ion-content>
