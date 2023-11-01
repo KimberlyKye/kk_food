@@ -3,19 +3,19 @@ import { AuthenticationService } from '../shared/authentication-service';
 import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-tabs',
-  templateUrl: 'tabs.page.html',
-  styleUrls: ['tabs.page.scss'],
+  selector: 'app-home',
+  templateUrl: './home.page.html',
+  styleUrls: ['./home.page.scss'],
 })
-export class TabsPage implements OnInit {
+export class HomePage implements OnInit {
   constructor(
     public authService: AuthenticationService,
     public router: Router
   ) {}
 
   ngOnInit() {
-    if (!this.authService.isLoggedIn) {
-      setTimeout(() => this.router.navigate(['home']));
+    if (this.authService.isLoggedIn) {
+      setTimeout(() => this.router.navigate(['tabs']));
     }
   }
 }

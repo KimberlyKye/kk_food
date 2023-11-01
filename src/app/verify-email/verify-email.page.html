@@ -1,0 +1,26 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>Аккаунт не подтверждён</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <ion-grid>
+    <ion-row>
+      <h2 class="simple-text">Необходимо подтверждение аккаунта</h2>
+      <p class="simple-text">
+        Пожалуйста, проверьте свою электронную почту и нажмите на ссылку, чтобы
+        подтвердить свой адрес электронной почты.
+      </p>
+      <ion-button
+        class="simple-text"
+        type="submit"
+        (click)="authService.SendVerificationMail()"
+      >
+        Отправить письмо ещё раз
+      </ion-button>
+    </ion-row>
+  </ion-grid>
+</ion-content>

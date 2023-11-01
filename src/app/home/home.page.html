@@ -1,0 +1,23 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title> KK food - твой любимый дневник питания </ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content class="auth-form">
+  <ion-grid>
+    <ion-row>
+      <ion-col class="ion-align-self-center">
+        <ion-button
+          [routerLink]="['/registration']"
+          expand="block"
+          color="primary"
+          >Создать аккаунт</ion-button
+        >
+        <p class="simple-text">Уже есть аккаунт?</p>
+        <ion-button [routerLink]="['/login']" expand="block" color="danger"
+          >Войти</ion-button
+        >
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>
