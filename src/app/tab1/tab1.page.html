@@ -11,6 +11,15 @@
     </ion-toolbar>
   </ion-header>
 
+  <p>
+    <ion-icon name="arrow-back" (click)="go(-1)"></ion-icon>
+    <span>
+      <!-- {{ dateService.date | async | moment}} -->
+      {{currentDateString}}
+    </span>
+    <ion-icon name="arrow-forward" (click)="go(1)"></ion-icon>
+  </p>
+
   <ion-accordion-group>
     <ion-accordion
       *ngFor="let meal of meals; let i = index"

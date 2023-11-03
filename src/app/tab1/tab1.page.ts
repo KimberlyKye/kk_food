@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 
 import { ModalController } from '@ionic/angular';
 import { AddMealModalComponent } from './../add-meal-modal/add-meal-modal.component';
+import { ApiService } from '../services/api.service';
+import { MealsService } from '../services/meals.service';
 
 @Component({
   selector: 'app-tab1',
@@ -9,26 +11,20 @@ import { AddMealModalComponent } from './../add-meal-modal/add-meal-modal.compon
   styleUrls: ['tab1.page.scss'],
 })
 export class Tab1Page {
-  defaultMeals = [
-    {
-      value: 'breakfast',
-      label: 'Завтрак',
-      content: {} as any,
-    },
-    {
-      value: 'launch',
-      label: 'Обед',
-      content: {} as any,
-    },
-    {
-      value: 'dinner',
-      label: 'Ужин',
-      content: {} as any,
-    },
-  ];
-  meals = this.defaultMeals;
+  currentDate = new Date();
+  currentDateString = this.currentDate.toDateString();
 
-  constructor(private modalCtrl: ModalController) {}
+  meals: any[];
+
+  constructor(
+    private modalCtrl: ModalController,
+    private api: ApiService,
+    private mealsService: MealsService
+  ) {}
+
+  ngOnInit() {
+    this.initDay(new Date());
+  }
 
   addMeal(title: string) {
     this.meals.push({
@@ -36,10 +32,12 @@ export class Tab1Page {
       label: title,
       content: {} as any,
     });
+    this.api.updateMeals(this.meals, this.currentDateString);
   }
 
   deleteMeal(id: number) {
     this.meals.splice(id, 1);
+    this.api.updateMeals(this.meals, this.currentDateString);
   }
 
   async openModal() {
@@ -53,5 +51,26 @@ export class Tab1Page {
     if (role === 'confirm') {
       this.addMeal(data);
     }
+  }
+
+  go(direction: number) {
+    const nextDay = this.currentDate;
+    nextDay.setDate(nextDay.getDate() + direction);
+    this.initDay(nextDay);
+  }
+
+  initDay(date: Date) {
+    this.updateDate(date);
+
+    this.mealsService
+      .getMeals(this.currentDateString)
+      .subscribe((meals: any[]) => {
+        this.meals = meals;
+      });
+  }
+
+  updateDate(date: Date) {
+    this.currentDate = date;
+    this.currentDateString = this.currentDate.toDateString();
   }
 }
